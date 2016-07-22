@@ -25,9 +25,10 @@ syndicate specified
 ```
 maxInterest: 24
 minInterest: 6
+pricePerInvestment: 5000
 ```
 ```coffeescript
-amount: 5000
+amount: "{pricePerInvestment}"
 principle: $gte: 10000000
 rate:
 	weight: [
@@ -55,6 +56,7 @@ term:
     ,
       $lt: 72
     ]
+yearsInBusiness: $gte: 2
 sort: [
 	"{organization.employees.totalMinority}": -1
     $linearDistance: [[45.5083, 122.6660],"{organization.location}"]: -1
@@ -65,15 +67,18 @@ sort: [
 
 ```coffeescript
 principle: $gte: 12000000
+pricePerShare: $gte: 1000
 rate: $lte: 12
 term: $gte: 60
 organization:
+	firstTaxReturn: "2014-07-22T13:35:31.309Z"
 	fico: 700
     debtToServiceCreditRatio: 1.2
     location: [45.5262325, 122.6769999]
 ```
 
 ### Resulting Agreement
+
 ```
 amount: 5000
 rate: 12
